@@ -1,0 +1,13 @@
+with customers as (
+    select first_name,id from raw1.jaffle_shop.customers
+),
+
+orders as (
+    select user_id,order_date from raw1.jaffle_shop.orders
+),
+
+final as (
+    select c.first_name, o.order_date from customers c, orders o where o.user_id = c.id
+)
+
+select * from final
